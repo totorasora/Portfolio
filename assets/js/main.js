@@ -99,7 +99,11 @@
 			$window.on('load', function() {
 
 				$('#two').poptrox({
-					caption: function($a) { return $a.next('h3').text(); },
+					caption: function($a) {
+						var link = $a.closest('.work-item').find('.live-link').attr('href');
+						var captionText = $a.closest('.work-item').find('h3').text();
+						return '<a href="' + link + '" target="_blank" style="color: #787878">' + captionText + '</a>';
+					},
 					overlayColor: '#2c2c2c',
 					overlayOpacity: 0.85,
 					popupCloserText: '',
